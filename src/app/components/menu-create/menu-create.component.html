@@ -1,0 +1,103 @@
+<div class="container mx-auto py-8">
+  <header class="text-center mb-12">
+    <h1 class="text-4xl font-bold mb-2">The Cozy Bistro</h1>
+    <p class="text-lg mb-4">Savor the flavors of our exquisite cuisine in a warm and inviting atmosphere.</p>
+    <p class="text-gray-600">123 Main Street, Anytown USA | Open Daily: 11am - 10pm</p>
+  </header>
+
+  <div class="row justify-content-center">
+    <div class="col-md-4 register-Menu">
+      <!-- form card register -->
+      <div class="card-body">
+        <form [formGroup]="MenuForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="inputName">Name</label>
+            <input class="form-control" type="text" formControlName="name" />
+            <!-- error -->
+            <div class="text-danger" *ngIf="submitted && myForm['name'].errors?.['required']">
+              Name is required.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="inputDesc">Desc</label>
+            <input class="form-control" type="text" formControlName="desc" />
+            <!-- error -->
+            <div class="text-danger" *ngIf="submitted && myForm['desc'].errors?.['required']">
+              Enter your desc.
+            </div>
+            <div class="text-danger" *ngIf="submitted && myForm['desc'].errors?.['pattern']">
+              Enter valid desc.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="inputPrice">Price</label>
+            <input class="form-control" type="text" formControlName="price" />
+            <!-- error -->
+            <div class="text-danger" *ngIf="submitted && myForm['price'].errors?.['required']">
+              Enter your price.
+            </div>
+            <div class="text-danger" *ngIf="submitted && myForm['price'].errors?.['pattern']">
+              Enter valid price.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="inputCuisine">Cuisine</label>
+            <input class="form-control" type="text" formControlName="cuisine" />
+            <!-- error -->
+            <div class="text-danger" *ngIf="submitted && myForm['cuisine'].errors?.['required']">
+              Enter your cuisine.
+            </div>
+            <div class="text-danger" *ngIf="submitted && myForm['cuisine'].errors?.['pattern']">
+              Enter valid cuisine.
+            </div>
+          </div>
+          <div class="d-grid">
+            <button
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="submit">
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- form card register -->
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+    <!-- Table to display food information -->
+    <div class="bg-white shadow-md rounded p-8">
+      <table id="foodTable" class="min-w-full">
+        <thead class="bg-gray-100 border-b">
+          <tr>
+            <th class="text-left px-4 py-2">#</th>
+            <th class="text-left px-4 py-2">Name</th>
+            <th class="text-left px-4 py-2">Price</th>
+            <th class="text-left px-4 py-2">Description</th>
+            <th class="text-left px-4 py-2">Cuisine</th>
+            <th class="text-left px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Food items will be dynamically added here -->
+          <tr>
+            <td class="border px-4 py-2">#</td>
+            <td class="border px-4 py-2">Shahi Paneer</td>
+            <td class="border px-4 py-2">$14.99</td>
+            <td class="border px-4 py-2">A rich and creamy curry made with paneer (Indian cottage cheese) simmered in a
+              tomato-based gravy, flavored with aromatic spices and nuts.</td>
+            <td class="border px-4 py-2">Mughlai</td>
+            <td class="border px-4 py-2">
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="button">Update</button>
+              <button
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="button">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
